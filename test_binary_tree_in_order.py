@@ -1,5 +1,5 @@
 import pytest
-from Util import create_tree_from_array
+from Util import create_tree_from_dict
 from binary_tree_in_order import in_order_traversal
 
 use_cases = (
@@ -16,5 +16,5 @@ edge_cases = (
 
 @pytest.mark.parametrize(('root_num', 'node_dict', 'expected'), use_cases+edge_cases)
 def test_in_order_traversal(root_num, node_dict, expected):
-    input_root_node = create_tree_from_array(root_num, node_dict)
+    input_root_node = create_tree_from_dict(root_num, node_dict)
     assert in_order_traversal(input_root_node) == expected
