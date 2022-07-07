@@ -8,7 +8,7 @@ class TreeNode:
         self.right = right
 
 
-def create_tree_from_array(root_num: int, node_dict: dict):
+def create_tree_from_dict(root_num: int, node_dict: dict):
     if root_num is None:
         return None
     root_node = TreeNode(root_num)
@@ -26,3 +26,18 @@ def create_tree_from_array(root_num: int, node_dict: dict):
             queue.append(right_node)
 
     return root_node
+
+
+def create_tree_from_array(array: List) -> TreeNode:
+    tree = []
+    for num in array:
+        new_node = TreeNode(num)
+        tree.append(new_node)
+
+    for i in range(len(array)):
+        left_child_index = i*2 + 1
+        right_child_index = i*2 + 2
+        tree[i].left = tree[left_child_index] if left_child_index < len(tree) else None
+        tree[i].right = tree[right_child_index] if right_child_index < len(tree) else None
+
+    return tree[0]
