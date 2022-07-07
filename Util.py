@@ -15,7 +15,7 @@ def create_tree_from_array(root_num: int, node_dict: dict):
     queue = [root_node]
     while len(queue) > 0:
         current_node = queue.pop(0)
-        left_num, right_num = node_dict[current_node.val][0], node_dict[current_node.val][0]
+        left_num, right_num = node_dict[current_node.val][0], node_dict[current_node.val][1]
         if left_num is not None:
             left_node = TreeNode(left_num)
             current_node.left = left_node
