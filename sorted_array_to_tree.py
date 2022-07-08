@@ -4,10 +4,15 @@ from Util import TreeNode
 
 
 def sorted_array_to_bst(nums: List[int]) -> TreeNode:
-    if len(nums) == 0:
-        return None
-    mid = int(len(nums)/2)
-    node = TreeNode(nums[mid])
-    node.left = sorted_array_to_bst(nums[:mid])
-    node.right = sorted_array_to_bst(nums[mid+1:])
-    return node
+    def sorted_to_bst_rec(left_pointer, right_pointer):
+        if left_pointer == right_pointer:
+            return TreeNode(nums[left_pointer])
+        if left_pointer > right_pointer:
+            return None
+        mid = int((left_pointer+right_pointer)/2)
+        node = TreeNode(nums[mid])
+        node.left = sorted_to_bst_rec(left_pointer, mid-1)
+        node.right = sorted_to_bst_rec(mid+1, right_pointer)
+        return node
+
+    return sorted_to_bst_rec(0, len(nums)-1)
