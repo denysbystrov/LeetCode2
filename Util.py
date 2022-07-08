@@ -44,3 +44,19 @@ def create_tree_from_array(array: List) -> TreeNode:
         return tree[0]
     else:
         return None
+
+
+def check_tree_height_balanced(root: TreeNode):
+    if root is None:
+        return 0
+
+    height_left = check_tree_height_balanced(root.left)
+    height_right = check_tree_height_balanced(root.right)
+
+    if height_left is None or height_right is None:
+        return None
+    elif abs(height_left-height_right) <= 1:
+        return 1+max(height_left, height_right)
+    else:
+        return None
+
