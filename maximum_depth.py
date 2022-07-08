@@ -3,13 +3,19 @@ from Util import TreeNode
 
 
 def maximum_depth(root: TreeNode) -> int:
+    if root:
+        root.val = 1
+    queue = [root]
+    max_depth = 0
+    while len(queue) > 0:
+        current_node = queue.pop(0)
+        if current_node is not None:
+            max_depth = max(current_node.val, max_depth)
+            if current_node.left is not None:
+                current_node.left.val = current_node.val + 1
+            if current_node.right is not None:
+                current_node.right.val = current_node.val + 1
+            queue.append(current_node.left)
+            queue.append(current_node.right)
 
-    def max_depth_rec(node) -> int:
-        if node is None:
-            return 0
-
-        left_depth = max_depth_rec(node.left)
-        right_depth = max_depth_rec(node.right)
-        return 1 + max(left_depth, right_depth)
-
-    return max_depth_rec(root)
+    return max_depth
