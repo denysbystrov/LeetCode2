@@ -40,4 +40,7 @@ def create_tree_from_array(array: List) -> TreeNode:
         tree[i].left = tree[left_child_index] if left_child_index < len(tree) else None
         tree[i].right = tree[right_child_index] if right_child_index < len(tree) else None
 
-    return tree[0]
+    if len(tree) > 0:
+        return tree[0]
+    else:
+        return None
