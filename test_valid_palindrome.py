@@ -5,7 +5,7 @@ from valid_palindrome import is_palidrome
 use_cases = (
     ("A man, a plan, a canal: Panama", True),
     ('xfgddefddgfx', False),
-    ('ghf: , fdsaf', False)
+    ('6ghf6: , fdsaf', False)
 )
 
 edge_cases = (
