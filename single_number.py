@@ -3,4 +3,7 @@ from typing import List
 
 
 def single_number(nums: List[int]) -> int:
-    return 0
+    final_num = 0
+    for num in nums:
+        final_num = final_num ^ num
+    return final_num
