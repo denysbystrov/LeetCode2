@@ -81,6 +81,12 @@ def create_two_lists(arr_a, arr_b, intersection_idx):
     linked_list_a = [ListNode(num) for num in arr_a]
     linked_list_b = [ListNode(num) for num in arr_b]
     return_val = None
+    for i in range(len(arr_a)-1):
+        linked_list_a[i].next = linked_list_a[i+1]
+
+    for i in range(len(arr_b)-1):
+        linked_list_b[i].next = linked_list_b[i+1]
+
     if intersection_idx != -1:
         linked_list_b[-1].next = linked_list_a[intersection_idx]
         return_val = linked_list_a[intersection_idx]
