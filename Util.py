@@ -77,3 +77,15 @@ def create_list_from_array(arr, cycle_index):
     return linked_list[0]
 
 
+def create_two_lists(arr_a, arr_b, intersection_idx):
+    linked_list_a = [ListNode(num) for num in arr_a]
+    linked_list_b = [ListNode(num) for num in arr_b]
+    return_val = None
+    if intersection_idx != -1:
+        linked_list_b[-1].next = linked_list_a[intersection_idx]
+        return_val = linked_list_a[intersection_idx]
+
+    head_a = linked_list_a[0] if len(linked_list_a) > 0 else None
+    head_b = linked_list_b[0] if len(linked_list_b) > 0 else None
+    return head_a, head_b, return_val
+
