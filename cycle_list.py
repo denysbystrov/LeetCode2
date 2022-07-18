@@ -4,16 +4,15 @@ from Util import create_list_from_array
 
 
 def has_cycle(head: ListNode) -> bool:
-    node_set = set()
-    current_node = head
-    while current_node:
-        if current_node in node_set:
+    pointer1 = head
+    pointer2 = head.next if head.next else None
+    count = 0
+    while pointer1 and pointer2:
+        if pointer1 == pointer2:
             return True
-        node_set.update([current_node])
-        current_node = current_node.next
+        if count % 2 == 0:
+            pointer1 = pointer1.next
+        pointer2 = pointer2.next
+        count += 1
 
     return False
-
-
-head_node = create_list_from_array([1, 2, 3, 4], -1)
-print(has_cycle(head_node))
