@@ -8,6 +8,12 @@ class TreeNode:
         self.right = right
 
 
+class ListNode:
+    def __init__(self, val=0, next_n=None):
+        self.val = val
+        self.next = next_n
+
+
 def create_tree_from_dict(root_num: int, node_dict: dict):
     if root_num is None:
         return None
@@ -59,4 +65,15 @@ def check_tree_height_balanced(root: TreeNode):
         return 1+max(height_left, height_right)
     else:
         return None
+
+
+def create_list_from_array(arr, cycle_index):
+    linked_list = [ListNode(num) for num in arr]
+    for i in range(len(arr)-1):
+        linked_list[i].next = linked_list[i+1]
+    if cycle_index != -1:
+        linked_list[-1].next = linked_list[cycle_index]
+
+    return linked_list[0]
+
 
